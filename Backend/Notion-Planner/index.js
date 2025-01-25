@@ -16,14 +16,11 @@ const notionHeaders = {
 };
 
 app.post("/create-project", async (req, res) => {
-    console.log("Hello")
   const { title, description, status } = req.body;
   if (!title || !description || !status) {
     return res.status(400).json({ error: "Missing required fields: title, description, or status" });
   }
-  console.log("h")
   try {
-    console.log("i")
     const response = await axios.post(
       `${notionBaseUrl}/pages`,
       {
@@ -50,7 +47,6 @@ app.post("/create-project", async (req, res) => {
       },
       { headers: notionHeaders }
     );
-    console.log("e")
     res.status(201).json({ message: "Project created successfully!", data: response.data });
   } catch (error) {
     console.error(error.response?.data || error.message);
