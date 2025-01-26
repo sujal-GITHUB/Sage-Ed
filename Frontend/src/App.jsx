@@ -5,7 +5,7 @@ import Dashboard from './Pages/Dashboard'
 
 function App() {
   return (
-    <div>
+    <div className='w-screen'>
       <Routes>
         <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
