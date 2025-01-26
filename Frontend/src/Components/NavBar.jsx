@@ -1,42 +1,24 @@
-import React from 'react';
-
-function NavBar() {
-    return (
-        <div className="flex justify-between items-center px-8 py-4">
-            <div className="text-xl font-semibold text-gray-800">
-                <span className="flex items-center gap-2 font-bold text-2xl">
-                    <span className="bg-[#ffd700] rounded-full w-6 h-6 flex items-center justify-center text-black">C</span>
-                    Connect teams
-                </span>
-
-            </div>
-
-            <div>
-                <ul className="flex gap-6 items-center font-bold">
-                    <li className="text-lg text-gray-700 hover:text-gray-900 cursor-pointer transition-all duration-200">
-                        Products
-                    </li>
-                    <li className="text-lg text-gray-700 hover:text-gray-900 cursor-pointer transition-all duration-200">
-                        Startup tools
-                    </li>
-                    <li className="text-lg text-gray-700 hover:text-gray-900 cursor-pointer transition-all duration-200">
-                        Features
-                    </li>
-                    <li className="text-lg text-gray-700 hover:text-gray-900 cursor-pointer transition-all duration-200">
-                        Live support
-                    </li>
-                    <li className="text-lg text-gray-700 hover:text-gray-900 cursor-pointer transition-all duration-200">
-                        Our plans
-                    </li>
-                    <li>
-                        <button className="bg-[#d7e933] border-2 border-black text-black px-6 py-2 rounded-lg font-bold shadow-[2px_2px_0px_0px_black] cursor-pointer hover:bg-[#d7e103] transition-colors duration-300">
-                            Login
-                        </button>
-                    </li>
-                </ul>
-            </div>
+const Navbar = () => {
+  return (
+    <nav className="bg-[#DDE6ED] md:bg-transparent fixed md:relative top-0 right-0 p-4 z-30 w-full">
+      <div className="flex items-center justify-end gap-2 max-w-full mx-auto">
+        <input 
+          type="text" 
+          placeholder="Search" 
+          className="hidden md:block w-48 px-4 py-2 border-2 border-black rounded-lg bg-white" 
+        />
+        <div className="md:hidden px-3 py-2 rounded-xl flex justify-center items-center border-2 border-black bg-white">
+          <i className="ri-search-line"></i>
         </div>
-    );
+        <div className="px-3 py-2 rounded-xl flex justify-center items-center border-2 border-black bg-white hover:bg-gray-100">
+          <i className="ri-notification-3-fill"></i>
+        </div>
+        <div className="px-3 py-2 rounded-xl flex justify-center items-center border-2 border-black bg-white hover:bg-gray-100">
+          <i className="ri-user-3-fill"></i>
+        </div>
+      </div>
+    </nav>
+  )
 }
 
-export default NavBar;
+export default Navbar
