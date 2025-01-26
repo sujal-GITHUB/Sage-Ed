@@ -6,7 +6,7 @@ function MainContent() {
             {/* Top Section */}
             <div className="flex flex-col md:flex-row w-full">
                 {/* Left Section */}
-                <div className="flex-1 py-10">
+                <div className="flex-1 py-10 px-4">
                     <div className="text-4xl md:text-6xl font-bold">
                         <span>
                             Collaborate <br /> across the world

@@ -20,7 +20,7 @@ function NavBar() {
 
             {/* Menu for large screens */}
             <div className="hidden lg:block">
-                <ul className="flex gap-6 items-center font-bold">
+                <ul className="flex lg:gap-4 xl:gap-8 items-center font-bold">
                     <li className="text-lg text-gray-700 hover:text-gray-900 cursor-pointer transition-all duration-200">
                         Products
                     </li>
@@ -85,7 +85,7 @@ function NavBar() {
                                 Our plans
                             </li>
                             <li>
-                                <button className="bg-[#d7e933] border-2 border-black text-black px-4 py-2 rounded-lg font-bold shadow-[2px_2px_0px_0px_black] cursor-pointer hover:bg-[#d7e103] transition-colors duration-300">
+                                <button className="bg-[#d7e933] border-2 w-full border-black text-black px-4 py-2 rounded-lg font-bold shadow-[2px_2px_0px_0px_black] cursor-pointer hover:bg-[#d7e103] transition-colors duration-300">
                                     Login
                                 </button>
                             </li>
