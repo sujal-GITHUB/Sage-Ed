@@ -1,8 +1,15 @@
 import React from 'react'
+import { Routes,Route } from 'react-router-dom'
+
+import Dashboard from './Pages/Dashboard'
 
 function App() {
   return (
-    <div className='bg-red-100'>App</div>
+    <div>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard/>} />
+      </Routes>
+    </div>
   )
 }
 
