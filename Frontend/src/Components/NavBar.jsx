@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import Cancel from '../assets/Cancel.svg';
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const clickClose = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
         <div className="flex justify-between items-center py-3">
@@ -42,7 +47,7 @@ function NavBar() {
             {/* Three Dots Menu for small screens */}
             <div className="block lg:hidden">
                 <button
-                    className="text-gray-800"
+                    className="text-gray-800 cursor-pointer"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                     {/* Three Dots Icon */}
@@ -56,6 +61,13 @@ function NavBar() {
                 {/* Dropdown Menu */}
                 {isMenuOpen && (
                     <div className="absolute right-4 top-12 bg-white border border-gray-300 shadow-lg rounded-md w-48">
+                        {/* Close Button (Cancel Icon) */}
+                        <img
+                            src={Cancel}
+                            alt="Close Menu"
+                            className="w-6 h-6 absolute top-3 right-3 cursor-pointer transition-transform transform hover:scale-110"
+                            onClick={clickClose}
+                        />
                         <ul className="flex flex-col gap-2 p-4 font-bold">
                             <li className="text-lg text-gray-700 hover:text-gray-900 cursor-pointer transition-all duration-200">
                                 Products
