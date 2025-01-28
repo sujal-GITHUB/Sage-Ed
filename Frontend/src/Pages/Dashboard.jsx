@@ -59,7 +59,7 @@ const Dashboard = () => {
         {renderContent()}
       </main>
     </div>
-  )
+  );
 }
 
 export default Dashboard
