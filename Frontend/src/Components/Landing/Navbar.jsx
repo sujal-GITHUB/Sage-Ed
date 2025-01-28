@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Cancel from '../assets/Cancel.svg';
+import Cancel from '../../assets/Cancel.svg';
 
-function NavBar() {
+function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const clickClose = () => {
@@ -14,7 +14,7 @@ function NavBar() {
             <div className="text-xl font-semibold text-gray-800">
                 <span className="flex items-center gap-2 font-bold text-2xl">
                     <span className="bg-[#ffd700] rounded-full w-6 h-6 flex items-center justify-center text-black">C</span>
-                    Connect teams
+                    Hyphen-Code
                 </span>
             </div>
 
@@ -97,4 +97,4 @@ function NavBar() {
     );
 }
 
-export default NavBar;
+export default Navbar;

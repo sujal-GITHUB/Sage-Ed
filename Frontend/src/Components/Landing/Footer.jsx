@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Facebook from '../assets/Facebook.svg';
-import Instagram from '../assets/Instagram.svg';
-import X from '../assets/X.svg';
+import Facebook from '../../assets/Facebook.svg';
+import Instagram from '../../assets/Instagram.svg';
+import X from '../../assets/X.svg';
 
 function Footer() {
   return (
