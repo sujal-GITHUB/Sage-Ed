@@ -7,9 +7,9 @@ const Stat = ({ value, label }) => (
   </div>
 )
 
-const TrainerCard = ({ trainer }) => {
+const Overview = ({ trainer }) => {
   return (
-    <div className="p-4 md:p-6 bg-yellow-300 rounded-xl border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+    <div className="p-4 md:p-6 h-96 bg-yellow-300 rounded-xl border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
         <img
           src={"https://i.pinimg.com/736x/67/16/50/6716506ece297b94c625646e05bf091f.jpg" || "/placeholder.svg"}
@@ -39,4 +39,4 @@ const TrainerCard = ({ trainer }) => {
   )
 }
 
-export default TrainerCard
+export default Overview
