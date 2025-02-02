@@ -79,7 +79,7 @@ export default function VideoSummarizer() {
 
   return (
     <div className="w-full h-[calc(100vh-100px)]">
-      <div className="h-full bg-white border-2 border-black rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 p-4 md:p-6">
+      <div className="h-full bg-[#fffbea] border-2 border-black rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 p-4 md:p-6">
         <div className="flex flex-col lg:flex-row h-full gap-4">
           {/* Main Content */}
           <div className="flex-1 flex flex-col gap-4 h-[60vh] lg:h-full">
@@ -136,7 +136,7 @@ export default function VideoSummarizer() {
               {questions.map((question, index) => (
                 <div 
                   key={index}
-                  className="p-3 bg-white rounded-lg border-2 border-black cursor-pointer hover:bg-black hover:text-white transition-colors"
+                  className="p-3 bg-[#fffbea] rounded-lg border-2 border-black cursor-pointer hover:bg-black hover:text-white transition-colors"
                 >
                   {question}
                 </div>
