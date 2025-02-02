@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleMobileMenu, setActiveItem } from '../store/navigationSlice'
-import Sidebar from "../components/Dashboard/Sidebar"
+import Sidebar from "../Components/Dashboard/Sidebar"
 import Navbar from "../Components/Dashboard/Navbar"
-import MobileMenu from '../components/Dashboard/MobileMenu'
+import MobileMenu from '../Components/Dashboard/MobileMenu'
 import Home from '../Components/Dashboard/Home'
 import AiAssistant from '../Components/Dashboard/AiAssistant'
 import Tasks from '../Components/Dashboard/Tasks'
@@ -10,6 +10,7 @@ import VideoSummarizer from '../Components/Dashboard/VideoSummarizer'
 import NotionHelp from '../Components/Dashboard/NotionHelp'
 import Tools from '../Components/Dashboard/Tools'
 import CareerPath from '../Components/Dashboard/CareerPath'
+import SavedNotions from '../Components/Dashboard/Notion/SavedNotions'
 
 const Dashboard = () => {
   const dispatch = useDispatch()
@@ -31,6 +32,8 @@ const Dashboard = () => {
         return <Tools />
       case 'career-path':
         return <CareerPath />
+      case 'saved-notions':
+        return <SavedNotions/>
       case 'logout':
         // Handle logout logic here
         window.location.href = '/login'

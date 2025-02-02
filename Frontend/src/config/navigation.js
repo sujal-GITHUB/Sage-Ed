@@ -15,6 +15,7 @@ export const navigationItems = [
   { id: 'tasks', icon: CheckSquare, label: 'Tasks' },
   { id: 'youtube-help', icon: Video, label: 'Video Summarizer' },
   { id: 'notion-help', icon: FileText, label: 'Notion' },
+  { id: 'saved-notions', icon: LogOut, label: 'Saved Notions' },
   { id: 'tools', icon: Wrench, label: 'Tools' },
   { id: 'career-path', icon: GraduationCap, label: 'Career Path' },
   { id: 'logout', icon: LogOut, label: 'Log out' }
