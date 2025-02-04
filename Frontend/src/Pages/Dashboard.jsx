@@ -5,6 +5,37 @@ import { LearningItem } from "../Components/Dashboard/LearningItem"
 import { EventCard } from "../Components/Dashboard/EventCard"
 import { learningItems, events } from "../data/mockData"
 
+const Dashboard = () => {
+  const dispatch = useDispatch()
+  const { isMobileMenuOpen, activeItem } = useSelector(state => state.navigation)
+
+  const renderContent = () => {
+    switch(activeItem) {
+      case 'home':
+        return <Home />
+      case 'ai-assistant':
+        return <AiAssistant />
+      case 'tasks':
+        return <Tasks />
+      case 'youtube-help':
+        return <VideoSummarizer />
+      case 'notion-help':
+        return <NotionHelp />
+      case 'tools':
+        return <Tools />
+      case 'career-path':
+        return <CareerPath />
+      case 'saved-notions':
+        return <SavedNotions/>
+      case 'logout':
+        // Handle logout logic here
+        window.location.href = '/login'
+        return null
+      default:
+        return <Home />
+    }
+  }
+
  const Dashboard = () => {
   return (
     <div className="min-h-screen bg-[#f5f9ff]">
