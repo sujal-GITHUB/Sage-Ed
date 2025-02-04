@@ -61,7 +61,7 @@ export default function Contact() {
       
       <div className="grid md:grid-cols-2 gap-16">
         {/* Contact Form */}
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+        <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
           <form className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               {['firstName', 'lastName'].map((field) => (
@@ -124,7 +124,7 @@ export default function Contact() {
         {/* Contact Information */}
         <div className="space-y-8">
           {Object.entries(CONTACT_INFO).map(([key, info]) => (
-            <div key={key} className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-105">
+            <div key={key} className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-105">
               <div className="flex items-center gap-4">
                 <div className="bg-[#ADFF00] p-4 rounded-lg">
                   <info.icon className="h-6 w-6" />
