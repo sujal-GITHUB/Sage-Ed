@@ -1,6 +1,5 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import EditorComponent from './Notion/EditorComponent'
-import Notions from '../../assets/Notions.json'
 
 const NotionHelp = () => {
   const [notes, setNotes] = useState([]);
