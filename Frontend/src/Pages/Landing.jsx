@@ -1,19 +1,27 @@
-import React from 'react';
+import Navbar from "../Components/Landing/Navbar"
+import Hero from "../Components/Landing/Hero"
+import Services from "../Components/Landing/Services"
+import { StarDecoration, CurveDecoration, DotDecoration } from "../Components/Landing/Decorations"
+import Contact from '../Components/Landing/Contact'
 
-import Navbar from '../Components/Landing/Navbar';
-import MainContent from '../Components/Landing/MainContent';
-import Footer from '../Components/Landing/Footer';
-
-function Landing() {
+export default function Landing() {
   return (
-    <div className="w-full min-h-screen bg-[#f8fdf9] flex justify-center items-center">
-      <div className="bg-[#fffdef] w-full shadow-[4px_4px_12px_rgba(0,0,0,0.1)] p-10 ">
-        <Navbar />
-        <MainContent />
-        <Footer/>
+    <div className="min-h-screen bg-[#FFFCF1] dark:bg-gray-800 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-20 right-20">
+        <StarDecoration />
       </div>
-    </div>
-  );
-}
+      <div className="absolute top-40 right-40">
+        <DotDecoration />
+      </div>
+      <div className="absolute bottom-40 left-20">
+        <CurveDecoration />
+      </div>
 
-export default Landing;
+      <Navbar />
+      <Hero />
+      <Services />
+      <Contact />
+    </div>
+  )
+}
