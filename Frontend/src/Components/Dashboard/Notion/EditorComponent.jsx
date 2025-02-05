@@ -13,31 +13,47 @@ const EditorComponent = ({ initialData, onSave }) => {
       const Checklist = (await import("@editorjs/checklist")).default;
       const List = (await import("@editorjs/list")).default;
 
-      if (!editorInstance.current) {
-        editorInstance.current = new EditorJS({
-          holder: "editorjs",
-          data: initialData,
-          placeholder: "Start typing here...",
-          tools: {
-            header: { class: Header, inlineToolbar: true },
-            checklist: { class: Checklist, inlineToolbar: true },
-            list: { class: List, inlineToolbar: true },
-          },
-        });
+      // Destroy the existing editor if it already exists
+      if (editorInstance.current) {
+        editorInstance.current.destroy();
+        editorInstance.current = null;
       }
+
+      // Create a new editor instance with the updated initialData
+      editorInstance.current = new EditorJS({
+        holder: "editorjs",
+        data: initialData,
+        placeholder: "Start typing here...",
+        tools: {
+          header: { class: Header, inlineToolbar: true },
+          checklist: { class: Checklist, inlineToolbar: true },
+          list: { class: List, inlineToolbar: true },
+        },
+      });
     };
 
-    initEditor();
+    // Initialize or re-initialize the editor whenever initialData changes
+    if (initialData) {
+      initEditor();
+    }
 
     return () => {
+      // Clean up the editor instance on component unmount
       editorInstance.current?.destroy();
       editorInstance.current = null;
     };
-  }, []);
+  }, [initialData]);  // Re-run when initialData changes
+
+  useEffect(() => {
+    console.log("hello");
+    
+  },[initialData])
 
   const handleSave = async () => {
     if (editorInstance.current) {
       const data = await editorInstance.current.save();
+      console.log(data);
+      
       onSave(data);
     }
   };
