@@ -1,83 +1,81 @@
+import React, { useState } from 'react';
 import { BottomNav } from "../Components/Dashboard/BottomNav";
 import { Header } from "../Components/Dashboard/Header";
-import { SearchBar } from "../Components/Dashboard/SearchBar";
-import Roadmap from "../Components/Dashboard/Roadmap";
-import ProgressBar from "../Components/Dashboard/ProgressBar";
-import Events from "../Components/Dashboard/Events";
+
+// Import all your page components
+import Home from '../Components/Dashboard/Home';
+import AIAssistant from '../Components/Dashboard/AIAssistant';
+import Notion from '../Components/Dashboard/Notion';
+import CareerPath from '../Components/Dashboard/CareerPath';
+import VideoSummarizer from '../Components/Dashboard/VideoSummarizer';
+
+// Import icons
+import { Home as HomeIcon, Cpu, Notebook, Briefcase, PlaySquare } from 'lucide-react';
 
 const Dashboard = () => {
-<<<<<<< HEAD
-=======
-  const dispatch = useDispatch()
-  const { isMobileMenuOpen, activeItem } = useSelector(state => state.navigation)
+  // State to keep track of the current active page
+  const [activePage, setActivePage] = useState('home');
 
-  const renderContent = () => {
-    switch(activeItem) {
-      case 'home':
-        return <Home />
-      case 'ai-assistant':
-        return <AiAssistant />
-      case 'tasks':
-        return <Tasks />
-      case 'youtube-help':
-        return <VideoSummarizer />
-      case 'notion-help':
-        return <NotionHelp />
-      case 'tools':
-        return <Tools />
-      case 'career-path':
-        return <CareerPath />
-      case 'saved-notions':
-        return <SavedNotions/>
-      case 'logout':
-        // Handle logout logic here
-        window.location.href = '/login'
-        return null
-      default:
-        return <Home />
-    }
-  }
+  // Navigation items with components
+  const navItems = [
+    { 
+      id: "home", 
+      icon: HomeIcon, 
+      label: "Home", 
+      component: Home 
+    },
+    { 
+      id: "ai-assistant", 
+      icon: Cpu, 
+      label: "AI Assistant", 
+      component: AIAssistant 
+    },
+    { 
+      id: "notion", 
+      icon: Notebook, 
+      label: "Notion", 
+      component: Notion 
+    },
+    { 
+      id: "career-path", 
+      icon: Briefcase, 
+      label: "Career Path", 
+      component: CareerPath 
+    },
+    { 
+      id: "video-summarizer", 
+      icon: PlaySquare, 
+      label: "Video Summarizer", 
+      component: VideoSummarizer 
+    },
+  ];
 
- const Dashboard = () => {
->>>>>>> 98907a04fd6b1078111a47d97580f157c50accd4
+  // Find the current page component
+  const ActivePageComponent = navItems.find(item => item.id === activePage)?.component || Home;
+
   return (
     <div className="min-h-screen bg-black dark:bg-gray-900">
-      {/* Header (Fixed at the Top) */}
+      {/* Header (Fixed at the Top) with page change functionality */}
       <nav className="fixed w-full top-0 z-50">
-        <Header />
+        <Header 
+          onNavItemClick={(id) => setActivePage(id)} 
+          activePage={activePage} 
+        />
       </nav>
 
       {/* Main Content Container */}
-      <div className="fixed inset-x-0 top-16 md:top-17 mx-2 bottom-0 bg-[#FFFCF1] dark:bg-gray-800 rounded-t-3xl overflow-hidden">
-        <div className="h-full p-6 md:p-8 overflow-y-auto scrollbar-hide">
-          <div className="max-w-7xl mx-auto space-y-6">
-
-            {/* Search Bar */}
-            <div className="flex justify-end">
-              <SearchBar />
-            </div>
-
-            {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-8">
-              {/* Roadmap Section */}
-              <div>
-                <Roadmap />
-
-                {/* Progress Bar */}
-                <div className="mt-6">
-                  <ProgressBar />
-                </div>
-              </div>
-
-              {/* Events Section */}
-              <Events/>
-            </div>
-          </div>
+      <div className="pt-16 pb-20 px-4">
+        <div className="grid grid-cols-1 gap-8">
+          <ActivePageComponent />
         </div>
       </div>
 
       {/* Bottom Navigation (Fixed at Bottom) */}
-      <BottomNav />
+      <BottomNav 
+        navItems={navItems} 
+        activePage={activePage} 
+        setActivePage={setActivePage} 
+      />
     </div>
   );
 };
