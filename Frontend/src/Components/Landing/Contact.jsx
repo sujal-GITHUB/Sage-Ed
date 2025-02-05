@@ -56,7 +56,7 @@ export default function Contact() {
   return (
     <div id='contact' className="max-w-7xl mx-auto px-4 py-20">
       <h2 className="text-4xl font-bold mb-16 dark:text-white">
-        Get in <span className="bg-[#ADFF00] px-2">Touch</span>
+        Get in <span className="bg-[#ADFF00] px-2 font-['Dancing_Script']">Touch</span>
       </h2>
       
       <div className="grid md:grid-cols-2 gap-16">

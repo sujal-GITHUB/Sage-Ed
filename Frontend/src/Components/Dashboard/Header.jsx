@@ -1,64 +1,81 @@
-import { Monitor, Grid, Clock, Cloud, LayoutGrid, Menu, X } from "lucide-react"
-import { HeaderIcon } from "./HeaderIcon"
-import { UserProfile } from "./UserProfile"
-import { useState } from "react"
+import { Home, Cpu, Notebook, Briefcase, PlaySquare, Menu, X } from "lucide-react";
+import { HeaderIcon } from "./HeaderIcon";
+import { UserProfile } from "./UserProfile";
+import { useState } from "react";
+import logo from "../../assets/logo.png";
+import DarkModeToggle from "../ui/DarkModeToggle";
 
 export const Header = () => {
-  const [activeItem, setActiveItem] = useState('learning') // Default active item
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeItem, setActiveItem] = useState("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'learning', icon: Monitor, label: 'Learning Plan' },
-    { id: 'dashboard', icon: Grid, label: 'Dashboard' },
-    { id: 'schedule', icon: Clock, label: 'Schedule' },
-    { id: 'cloud', icon: Cloud, label: 'Cloud' },
-    { id: 'apps', icon: LayoutGrid, label: 'Apps' }
-  ]
+    { id: "home", icon: Home, label: "Home" },
+    { id: "ai-assistant", icon: Cpu, label: "AI Assistant" },
+    { id: "notion", icon: Notebook, label: "Notion" },
+    { id: "career-path", icon: Briefcase, label: "Career Path" },
+    { id: "video-summarizer", icon: PlaySquare, label: "Video Summarizer" },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#ADFF00] text-white px-6 py-4">
+    <header className="sticky top-0 z-50 bg-black dark:bg-gray-900 text-white px-6 py-4">
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
-        <div className="text-xl font-bold">Dei</div>
-        
+        <img
+          src={logo}
+          className="w-24 hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer"
+          alt="Logo"
+        />
+
         {/* Desktop Menu */}
         <div className="hidden md:flex flex-1 items-center justify-center space-x-8">
           {navItems.map(({ id, icon: Icon, label }) => (
-            <HeaderIcon 
+            <HeaderIcon
               key={id}
               onClick={() => setActiveItem(id)}
-              className={`cursor-pointer transition-all duration-200 ${
-                activeItem === id ? 'bg-white text-black px-4 py-2 rounded-lg' : ''
+              className={`cursor-pointer transition-all duration-300 ease-in-out ${
+                activeItem === id
+                  ? "bg-[#ADFF00] font-bold font-['Dancing_Script'] text-black px-4 py-2 rounded-lg"
+                  : ""
               }`}
             >
               <Icon className="w-5 h-5" />
-              {activeItem === id && (
-                <span className="text-sm ml-2">{label}</span>
-              )}
+              {activeItem === id && <span className="text-sm ml-2">{label}</span>}
             </HeaderIcon>
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-black p-2"
-        >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-        
+        {/* Mobile Menu Button and Dark Mode Toggle */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-white p-2 transition-transform duration-300 ease-in-out"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          <div className="pr-5 flex justify-center items-center">
+            <DarkModeToggle />
+          </div>
+        </div>
+
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden">
+          <div className="absolute top-full px-4 left-0 right-0 pb-4 rounded-b-3xl bg-black dark:bg-gray-900 shadow-lg md:hidden">
             <div className="p-4 space-y-4">
+              <HeaderIcon
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="cursor-pointer w-full transition-all pb-3 duration-300 ease-in-out text-white"
+              >
+                <UserProfile />
+              </HeaderIcon>
               {navItems.map(({ id, icon: Icon, label }) => (
-                <HeaderIcon 
+                <HeaderIcon
                   key={id}
                   onClick={() => {
-                    setActiveItem(id)
-                    setIsMobileMenuOpen(false)
+                    setActiveItem(id);
+                    setIsMobileMenuOpen(false);
                   }}
-                  className={`cursor-pointer w-full transition-all duration-200 ${
-                    activeItem === id ? 'text-[#ADFF00]' : 'text-black'
+                  className={`cursor-pointer w-full transition-all duration-300 ease-in-out ${
+                    activeItem === id ? "text-[#ADFF00]" : "text-white"
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -68,9 +85,12 @@ export const Header = () => {
             </div>
           </div>
         )}
-        
-        <UserProfile />
+
+        {/* Desktop Profile */}
+        <div className="hidden md:flex">
+          <UserProfile />
+        </div>
       </nav>
     </header>
-  )
-}
+  );
+};
