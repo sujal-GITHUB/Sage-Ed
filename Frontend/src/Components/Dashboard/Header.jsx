@@ -5,8 +5,7 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 import DarkModeToggle from "../ui/DarkModeToggle";
 
-export const Header = () => {
-  const [activeItem, setActiveItem] = useState("home");
+export const Header = ({ onNavItemClick, activePage }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -16,6 +15,11 @@ export const Header = () => {
     { id: "career-path", icon: Briefcase, label: "Career Path" },
     { id: "video-summarizer", icon: PlaySquare, label: "Video Summarizer" },
   ];
+
+  const handleNavItemClick = (id) => {
+    onNavItemClick(id);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-black dark:bg-gray-900 text-white px-6 py-4">
@@ -31,15 +35,15 @@ export const Header = () => {
           {navItems.map(({ id, icon: Icon, label }) => (
             <HeaderIcon
               key={id}
-              onClick={() => setActiveItem(id)}
+              onClick={() => handleNavItemClick(id)}
               className={`cursor-pointer transition-all duration-300 ease-in-out ${
-                activeItem === id
+                activePage === id
                   ? "bg-[#ADFF00] font-bold font-['Dancing_Script'] text-black px-4 py-2 rounded-lg"
                   : ""
               }`}
             >
               <Icon className="w-5 h-5" />
-              {activeItem === id && <span className="text-sm ml-2">{label}</span>}
+              {activePage === id && <span className="text-sm ml-2">{label}</span>}
             </HeaderIcon>
           ))}
         </div>
@@ -70,12 +74,9 @@ export const Header = () => {
               {navItems.map(({ id, icon: Icon, label }) => (
                 <HeaderIcon
                   key={id}
-                  onClick={() => {
-                    setActiveItem(id);
-                    setIsMobileMenuOpen(false);
-                  }}
+                  onClick={() => handleNavItemClick(id)}
                   className={`cursor-pointer w-full transition-all duration-300 ease-in-out ${
-                    activeItem === id ? "text-[#ADFF00]" : "text-white"
+                    activePage === id ? "text-[#ADFF00]" : "text-white"
                   }`}
                 >
                   <Icon className="w-5 h-5" />
