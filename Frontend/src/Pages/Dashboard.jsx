@@ -1,11 +1,13 @@
-import { BottomNav } from "../Components/Dashboard/BottomNav"
-import { Header } from "../Components/Dashboard/Header"
-import { SearchBar } from "../Components/Dashboard/SearchBar"
-import { LearningItem } from "../Components/Dashboard/LearningItem"
-import { EventCard } from "../Components/Dashboard/EventCard"
-import { learningItems, events } from "../data/mockData"
+import { BottomNav } from "../Components/Dashboard/BottomNav";
+import { Header } from "../Components/Dashboard/Header";
+import { SearchBar } from "../Components/Dashboard/SearchBar";
+import Roadmap from "../Components/Dashboard/Roadmap";
+import ProgressBar from "../Components/Dashboard/ProgressBar";
+import Events from "../Components/Dashboard/Events";
 
 const Dashboard = () => {
+<<<<<<< HEAD
+=======
   const dispatch = useDispatch()
   const { isMobileMenuOpen, activeItem } = useSelector(state => state.navigation)
 
@@ -37,39 +39,47 @@ const Dashboard = () => {
   }
 
  const Dashboard = () => {
+>>>>>>> 98907a04fd6b1078111a47d97580f157c50accd4
   return (
-    <div className="min-h-screen bg-[#f5f9ff]">
-      <Header />
-      <main className="p-6">
-        <div className="grid grid-cols-[1fr_300px] gap-6">
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h1 className="text-2xl font-bold flex items-center gap-2">
-                My Learning Plan <span role="img" aria-label="book">📚</span>
-              </h1>
+    <div className="min-h-screen bg-black dark:bg-gray-900">
+      {/* Header (Fixed at the Top) */}
+      <nav className="fixed w-full top-0 z-50">
+        <Header />
+      </nav>
+
+      {/* Main Content Container */}
+      <div className="fixed inset-x-0 top-16 md:top-17 mx-2 bottom-0 bg-[#FFFCF1] dark:bg-gray-800 rounded-t-3xl overflow-hidden">
+        <div className="h-full p-6 md:p-8 overflow-y-auto scrollbar-hide">
+          <div className="max-w-7xl mx-auto space-y-6">
+
+            {/* Search Bar */}
+            <div className="flex justify-end">
               <SearchBar />
             </div>
-            <div className="space-y-6">
-              {learningItems.map((item, index) => (
-                <LearningItem key={index} {...item} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold flex items-center gap-2 mb-6">
-              My Events <span role="img" aria-label="smile">😊</span>
-            </h2>
-            <div className="space-y-4">
-              {events.map((event, index) => (
-                <EventCard key={index} {...event} />
-              ))}
+
+            {/* Main Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-8">
+              {/* Roadmap Section */}
+              <div>
+                <Roadmap />
+
+                {/* Progress Bar */}
+                <div className="mt-6">
+                  <ProgressBar />
+                </div>
+              </div>
+
+              {/* Events Section */}
+              <Events/>
             </div>
           </div>
         </div>
-      </main>
+      </div>
+
+      {/* Bottom Navigation (Fixed at Bottom) */}
       <BottomNav />
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

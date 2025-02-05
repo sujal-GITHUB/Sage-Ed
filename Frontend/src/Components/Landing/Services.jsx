@@ -47,7 +47,7 @@ export default function Services() {
     return (
       <div id="features" className="max-w-7xl mx-auto px-4 py-20">
         <h2 className="text-4xl font-bold mb-16 dark:text-white">
-          Our <span className="bg-[#ADFF00] px-2">Core</span> Features
+          Our <span className="bg-[#ADFF00] px-2 font-['Dancing_Script']">Core</span> Features
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (

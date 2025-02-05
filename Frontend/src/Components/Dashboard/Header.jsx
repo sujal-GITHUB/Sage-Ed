@@ -1,20 +1,96 @@
-import { Monitor, Grid, Clock, Cloud, LayoutGrid } from "lucide-react"
-import { HeaderIcon } from "./HeaderIcon"
-import { UserProfile } from "./UserProfile"
+import { Home, Cpu, Notebook, Briefcase, PlaySquare, Menu, X } from "lucide-react";
+import { HeaderIcon } from "./HeaderIcon";
+import { UserProfile } from "./UserProfile";
+import { useState } from "react";
+import logo from "../../assets/logo.png";
+import DarkModeToggle from "../ui/DarkModeToggle";
 
-export const Header = () => (
-  <header className="bg-black text-white p-4 rounded-t-xl flex items-center justify-between">
-    <div className="text-xl font-bold">Dei</div>
-    <div className="flex items-center space-x-6">
-      <HeaderIcon>
-        <Monitor className="w-4 h-4" />
-        <span className="text-sm">Learning Plan</span>
-      </HeaderIcon>
-      <Grid className="w-4 h-4" />
-      <Clock className="w-4 h-4" />
-      <Cloud className="w-4 h-4" />
-      <LayoutGrid className="w-4 h-4" />
-    </div>
-    <UserProfile />
-  </header>
-)
+export const Header = () => {
+  const [activeItem, setActiveItem] = useState("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { id: "home", icon: Home, label: "Home" },
+    { id: "ai-assistant", icon: Cpu, label: "AI Assistant" },
+    { id: "notion", icon: Notebook, label: "Notion" },
+    { id: "career-path", icon: Briefcase, label: "Career Path" },
+    { id: "video-summarizer", icon: PlaySquare, label: "Video Summarizer" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-50 bg-black dark:bg-gray-900 text-white px-6 py-4">
+      <nav className="flex items-center justify-between max-w-7xl mx-auto">
+        <img
+          src={logo}
+          className="w-24 hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer"
+          alt="Logo"
+        />
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex flex-1 items-center justify-center space-x-8">
+          {navItems.map(({ id, icon: Icon, label }) => (
+            <HeaderIcon
+              key={id}
+              onClick={() => setActiveItem(id)}
+              className={`cursor-pointer transition-all duration-300 ease-in-out ${
+                activeItem === id
+                  ? "bg-[#ADFF00] font-bold font-['Dancing_Script'] text-black px-4 py-2 rounded-lg"
+                  : ""
+              }`}
+            >
+              <Icon className="w-5 h-5" />
+              {activeItem === id && <span className="text-sm ml-2">{label}</span>}
+            </HeaderIcon>
+          ))}
+        </div>
+
+        {/* Mobile Menu Button and Dark Mode Toggle */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-white p-2 transition-transform duration-300 ease-in-out"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          <div className="pr-5 flex justify-center items-center">
+            <DarkModeToggle />
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full px-4 left-0 right-0 pb-4 rounded-b-3xl bg-black dark:bg-gray-900 shadow-lg md:hidden">
+            <div className="p-4 space-y-4">
+              <HeaderIcon
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="cursor-pointer w-full transition-all pb-3 duration-300 ease-in-out text-white"
+              >
+                <UserProfile />
+              </HeaderIcon>
+              {navItems.map(({ id, icon: Icon, label }) => (
+                <HeaderIcon
+                  key={id}
+                  onClick={() => {
+                    setActiveItem(id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`cursor-pointer w-full transition-all duration-300 ease-in-out ${
+                    activeItem === id ? "text-[#ADFF00]" : "text-white"
+                  }`}
+                >
+                  <Icon className="w-5 h-5" />
+                  <span className="text-sm ml-2">{label}</span>
+                </HeaderIcon>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Desktop Profile */}
+        <div className="hidden md:flex">
+          <UserProfile />
+        </div>
+      </nav>
+    </header>
+  );
+};
