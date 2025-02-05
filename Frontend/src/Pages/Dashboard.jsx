@@ -6,6 +6,40 @@ import ProgressBar from "../Components/Dashboard/ProgressBar";
 import Events from "../Components/Dashboard/Events";
 
 const Dashboard = () => {
+<<<<<<< HEAD
+=======
+  const dispatch = useDispatch()
+  const { isMobileMenuOpen, activeItem } = useSelector(state => state.navigation)
+
+  const renderContent = () => {
+    switch(activeItem) {
+      case 'home':
+        return <Home />
+      case 'ai-assistant':
+        return <AiAssistant />
+      case 'tasks':
+        return <Tasks />
+      case 'youtube-help':
+        return <VideoSummarizer />
+      case 'notion-help':
+        return <NotionHelp />
+      case 'tools':
+        return <Tools />
+      case 'career-path':
+        return <CareerPath />
+      case 'saved-notions':
+        return <SavedNotions/>
+      case 'logout':
+        // Handle logout logic here
+        window.location.href = '/login'
+        return null
+      default:
+        return <Home />
+    }
+  }
+
+ const Dashboard = () => {
+>>>>>>> 98907a04fd6b1078111a47d97580f157c50accd4
   return (
     <div className="min-h-screen bg-black dark:bg-gray-900">
       {/* Header (Fixed at the Top) */}
