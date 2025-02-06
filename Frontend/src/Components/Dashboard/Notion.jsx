@@ -22,6 +22,8 @@ const NotionHelp = () => {
     version: "2.11.10",
   });
 
+  
+
   // Fetch saved notes from Firebase
   useEffect(() => {
     const fetchNotes = async () => {
@@ -81,7 +83,19 @@ const NotionHelp = () => {
     try {
       const docRef = await addDoc(collection(db, "notionFiles"), {
         fileName,
-        data: initialData,
+        data: {
+          time: Date.now(),
+          blocks: [
+            {
+              type: "header",
+              data: {
+                text: "hello.js",
+                level: 2,
+              },
+            },
+          ],
+          version: "2.11.10",
+        },
       });
 
       setNotes([...notes, { id: docRef.id, fileName }]);
