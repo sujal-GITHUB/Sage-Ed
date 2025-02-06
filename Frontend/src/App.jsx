@@ -3,6 +3,7 @@ import Dashboard from './Pages/Dashboard'
 import Landing from './Pages/Landing'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import Login from './Pages/Login'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing/>}/>
           <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </Provider>
     </div>
