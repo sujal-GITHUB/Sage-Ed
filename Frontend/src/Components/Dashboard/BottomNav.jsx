@@ -7,7 +7,7 @@ export const BottomNav = () => (
     <Card className="p-2 bg-black flex items-center gap-2">
       {['T', 'A', 'P', 'R', 'D', 'O'].map((letter) => (
         <NavButton key={letter} active={letter === 'P'}>
-          <span className="font-mono">{letter}</span>
+          <span className="font-mono ">{letter}</span>
         </NavButton>
       ))}
       <NavButton>

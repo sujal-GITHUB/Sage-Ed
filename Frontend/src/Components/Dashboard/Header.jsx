@@ -52,7 +52,7 @@ export const Header = ({ onNavItemClick, activePage }) => {
         <div className="flex items-center gap-4">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2 transition-transform duration-300 ease-in-out"
+            className="md:hidden text-white transition-transform duration-300 ease-in-out"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -63,7 +63,7 @@ export const Header = ({ onNavItemClick, activePage }) => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full px-4 left-0 right-0 pb-4 rounded-b-3xl bg-black dark:bg-gray-900 shadow-lg md:hidden">
+          <div className="absolute top-full px-4 left-0 right-0 pb-4 rounded-b-4xl bg-black dark:bg-gray-900 shadow-lg md:hidden">
             <div className="p-4 space-y-4">
               <HeaderIcon
                 onClick={() => setIsMobileMenuOpen(false)}

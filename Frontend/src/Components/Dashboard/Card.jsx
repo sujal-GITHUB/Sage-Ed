@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 export const Card = ({ children, className = "" }) => (
-    <div className={`bg-white rounded-xl shadow-sm ${className}`}>
+    <div className={`bg-black dark:bg-gray-900 text-white rounded-xl shadow-sm ${className}`}>
       {children}
     </div>
   )

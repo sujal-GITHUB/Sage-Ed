@@ -44,7 +44,7 @@ const LearningRoadmap = () => {
   ];
 
   return (
-    <div className="max-w-3xl p-4 md:p-6 rounded-xl bg-[#FEFCE8]  dark:bg-gray-900 dark:text-white shadow-lg transition-all">
+    <div className="max-w-4xl p-4 md:p-6 rounded-xl bg-[#FEFCE8]  dark:bg-gray-900 dark:text-white shadow-lg transition-all">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Roadmap</h1>
@@ -60,8 +60,8 @@ const LearningRoadmap = () => {
       <div className="grid grid-cols-3 gap-4 mb-8">
         {stats.map((stat) => (
           <div key={stat.label} className={`bg-[#ADFF00] p-4 rounded-lg text-center`}>
-            <div className="text-2xl font-bold">{stat.value}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">{stat.label}</div>
+            <div className="text-2xl text-black font-bold">{stat.value}</div>
+            <div className="text-sm text-gray-600">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -139,15 +139,7 @@ const LearningRoadmap = () => {
         ))}
       </div>
 
-      {/* Floating Actions */}
-      <div className="fixed bottom-4 right-4 flex flex-col gap-2">
-        <button className="p-3 rounded-full bg-blue-500 dark:bg-blue-700 text-white shadow-lg hover:bg-blue-600 dark:hover:bg-blue-800 transition">
-          <Plus className="w-5 h-5" />
-        </button>
-        <button className="p-3 rounded-full bg-red-500 dark:bg-red-700 text-white shadow-lg hover:bg-red-600 dark:hover:bg-red-800 transition">
-          <Minus className="w-5 h-5" />
-        </button>
-      </div>
+      
     </div>
   );
 };
